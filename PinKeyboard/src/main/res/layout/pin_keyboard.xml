@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key1Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key4Container"
+        app:layout_constraintEnd_toStartOf="@+id/key2Container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/key1"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="1"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key2Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key5Container"
+        app:layout_constraintEnd_toStartOf="@+id/key3Container"
+        app:layout_constraintStart_toEndOf="@+id/key1Container"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/key2"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="2"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key3Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key6Container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/key2Container"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/key3"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="3"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key4Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key7Container"
+        app:layout_constraintEnd_toStartOf="@+id/key5Container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key1Container">
+
+        <TextView
+            android:id="@+id/key4"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="4"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key5Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key8Container"
+        app:layout_constraintEnd_toStartOf="@+id/key6Container"
+        app:layout_constraintStart_toEndOf="@+id/key4Container"
+        app:layout_constraintTop_toBottomOf="@+id/key2Container">
+
+        <TextView
+            android:id="@+id/key5"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="5"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key6Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key9Container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/key5Container"
+        app:layout_constraintTop_toBottomOf="@+id/key3Container">
+
+        <TextView
+            android:id="@+id/key6"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="6"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key7Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/leftKeyContainer"
+        app:layout_constraintEnd_toStartOf="@+id/key8Container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key4Container">
+
+        <TextView
+            android:id="@+id/key7"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="7"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key8Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/key0Container"
+        app:layout_constraintEnd_toStartOf="@+id/key9Container"
+        app:layout_constraintStart_toEndOf="@+id/key7Container"
+        app:layout_constraintTop_toBottomOf="@+id/key5Container">
+
+        <TextView
+            android:id="@+id/key8"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="8"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key9Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toTopOf="@+id/rightKeyContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/key8Container"
+        app:layout_constraintTop_toBottomOf="@+id/key6Container">
+
+        <TextView
+            android:id="@+id/key9"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="9"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/leftKeyContainer"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/key0Container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key7Container">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="6dp">
+            <ImageView
+                android:id="@+id/leftKey"
+                style="@style/pinKeyboardKey"
+                android:adjustViewBounds="true"
+                android:drawablePadding="16dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_fingerprint" />
+        </FrameLayout>
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/key0Container"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightKeyContainer"
+        app:layout_constraintStart_toEndOf="@+id/leftKeyContainer"
+        app:layout_constraintTop_toBottomOf="@+id/key8Container">
+
+        <TextView
+            android:id="@+id/key0"
+            style="@style/pinKeyboardKey"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:text="0"
+            android:textSize="42sp" />
+
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+    <com.sandev.pinkeyboard.SquareFrameLayout
+        android:id="@+id/rightKeyContainer"
+        style="@style/pinKeyboardKeysContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/key0Container"
+        app:layout_constraintTop_toBottomOf="@+id/key9Container">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="6dp">
+            <ImageView
+                android:id="@+id/rightKey"
+                style="@style/pinKeyboardKey"
+                android:adjustViewBounds="true"
+                android:drawablePadding="16dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_backspace" />
+        </FrameLayout>
+    </com.sandev.pinkeyboard.SquareFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

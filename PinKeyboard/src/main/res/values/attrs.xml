@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="pinKeyboardType">
+        <enum name="numbers" value="0"/>
+        <enum name="fingerprint" value="1"/>
+    </attr>
+    <attr name="pinKeyboardWidth" format="dimension">
+        <enum name="match_parent" value="-1"/>
+    </attr>
+    <attr name="pinKeyboardHeight" format="dimension">
+        <enum name="match_parent" value="-1"/>
+    </attr>
+    <declare-styleable name="PinKeyboard">
+        <attr name="pinKeyboardType"/>
+        <attr name="pinKeyboardWidth"/>
+        <attr name="pinKeyboardHeight"/>
+        <attr name="pinKeyboardTextSize" format="dimension"/>
+        <attr name="pinKeyboardTextColor" format="reference"/>
+        <attr name="pinKeyboardTextFontFamily" format="reference"/>
+        <attr name="pinKeyboardPadding" format="dimension"/>
+        <attr name="pinKeyboardBackground" format="reference"/>
+        <attr name="pinKeyboardLeftButtonIcon" format="reference"/>
+        <attr name="pinKeyboardLeftButtonBackground" format="reference"/>
+        <attr name="pinKeyboardRightButtonIcon" format="reference"/>
+        <attr name="pinKeyboardRightButtonBackground" format="reference"/>
+        <attr name="pinKeyboardSortedKeys" format="boolean"/>
+    </declare-styleable>
+</resources>
