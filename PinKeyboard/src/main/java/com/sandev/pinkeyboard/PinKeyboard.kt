@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class PinKeyboard: ConstraintLayout {
@@ -65,19 +67,19 @@ class PinKeyboard: ConstraintLayout {
     }
 
     fun hideLeftKey() {
-        leftKey.visibility = View.GONE
+        leftKeyContainer.visibility = View.INVISIBLE
     }
 
     fun showLeftKey() {
-        leftKey.visibility = View.VISIBLE
+        leftKeyContainer.visibility = View.VISIBLE
     }
 
     fun hideRightKey() {
-        rightKey.visibility = View.GONE
+        rightKeyContainer.visibility = View.INVISIBLE
     }
 
     fun showRightKey() {
-        rightKey.visibility = View.VISIBLE
+        rightKeyContainer.visibility = View.VISIBLE
     }
 
     fun setPinKeyBackground(@DrawableRes background: Int) {
@@ -197,8 +199,8 @@ class PinKeyboard: ConstraintLayout {
         pinKeys.add(view.findViewById(R.id.key0))
         leftKey = view.findViewById(R.id.leftKey)
         rightKey = view.findViewById(R.id.rightKey)
-        leftKeyContainer = view.findViewById(R.id.leftKeyContainer)
-        rightKeyContainer = view.findViewById(R.id.rightKeyContainer)
+        leftKeyContainer = view.findViewById(R.id.leftKeyBkg)
+        rightKeyContainer = view.findViewById(R.id.rightKeyBkg)
         fillNumbers()
         setStyles()
         setupListeners()
@@ -208,23 +210,21 @@ class PinKeyboard: ConstraintLayout {
         if (isSorted) {
             pinKeys.forEach {
                 val index = pinKeys.indexOf(it)
-                if (index != 10) it.text = "${index + 1}"
+                if (index != 9) it.text = "${index + 1}"
                 else it.text = "0"
             }
         } else {
-            val assortedSet = HashSet<Int>()
-            val assortedText = ArrayList<Int>()
-            val rnd = Random(10)
+            val list: MutableList<Int> = ArrayList()
+            val rnd = Random(System.currentTimeMillis())
             for (i in 0..9) {
                 var n = 0
                 do {
                     n = rnd.nextInt(10)
-                    if (n == 10) n = 0
-                } while (!assortedSet.add(n))
+                } while (list.contains(n))
+                list.add(n)
             }
-            assortedText.addAll(assortedSet)
             pinKeys.forEach {
-                it.text = "${assortedText[pinKeys.indexOf(it)]}"
+                it.text = "${list[pinKeys.indexOf(it)]}"
             }
         }
     }

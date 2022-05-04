@@ -194,12 +194,17 @@
         app:layout_constraintEnd_toStartOf="@+id/key0Container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/key7Container">
+
         <FrameLayout
-            android:layout_width="match_parent"
+            android:id="@+id/leftKeyBkg"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:gravity="center"
             android:padding="6dp">
+
             <ImageView
                 android:id="@+id/leftKey"
                 style="@style/pinKeyboardKey"
@@ -235,16 +240,23 @@
     <com.sandev.pinkeyboard.SquareFrameLayout
         android:id="@+id/rightKeyContainer"
         style="@style/pinKeyboardKeysContainer"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/key0Container"
         app:layout_constraintTop_toBottomOf="@+id/key9Container">
+
         <FrameLayout
-            android:layout_width="match_parent"
+            android:id="@+id/rightKeyBkg"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:gravity="center"
             android:padding="6dp">
+
             <ImageView
                 android:id="@+id/rightKey"
                 style="@style/pinKeyboardKey"
