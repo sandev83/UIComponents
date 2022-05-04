@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.*
@@ -40,6 +41,8 @@ class PinKeyboard: ConstraintLayout {
     private lateinit var pinKeys: MutableList<TextView>
     private lateinit var leftKey: ImageView
     private lateinit var rightKey: ImageView
+    private lateinit var leftKeyContainer: FrameLayout
+    private lateinit var rightKeyContainer: FrameLayout
 
     private var listener: PinKeyboardListener? = null
 
@@ -100,11 +103,11 @@ class PinKeyboard: ConstraintLayout {
     }
 
     private fun setLeftKeyBackground(@DrawableRes bg: Int) {
-        if (bg != 0) leftKey.background = ContextCompat.getDrawable(context, bg)
+        if (bg != 0) leftKeyContainer.background = ContextCompat.getDrawable(context, bg)
     }
 
     private fun setRightKeyBackground(@DrawableRes bg: Int) {
-        if (bg != 0) rightKey.background = ContextCompat.getDrawable(context, bg)
+        if (bg != 0) rightKeyContainer.background = ContextCompat.getDrawable(context, bg)
     }
 
     private fun setKeyWidth() {
@@ -154,7 +157,7 @@ class PinKeyboard: ConstraintLayout {
             keyHeight = array.getLayoutDimension(R.styleable.PinKeyboard_pinKeyboardHeight, DEFAULT_KEY_HEIGHT_DP)
             keyPadding = array.getDimensionPixelSize(R.styleable.PinKeyboard_pinKeyboardPadding, dpToPx(DEFAULT_KEY_PADDING_DP.toFloat()))
             pinKeyBakground = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardBackground,0)
-            pinKeyTextColor = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardTextColor, androidx.appcompat.R.color.primary_text_default_material_light)
+            pinKeyTextColor = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardTextColor, 0)
             rightKeyIcon = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardRightButtonIcon, 0)
             rightKeyBackground = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardRightButtonBackground, 0)
             fontFamily = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardTextFontFamily, 0)
@@ -182,7 +185,6 @@ class PinKeyboard: ConstraintLayout {
     private fun inflateView() {
         val view = View.inflate(context, R.layout.pin_keyboard, this)
         pinKeys = ArrayList(10)
-        pinKeys.add(view.findViewById(R.id.key0))
         pinKeys.add(view.findViewById(R.id.key1))
         pinKeys.add(view.findViewById(R.id.key2))
         pinKeys.add(view.findViewById(R.id.key3))
@@ -192,8 +194,11 @@ class PinKeyboard: ConstraintLayout {
         pinKeys.add(view.findViewById(R.id.key7))
         pinKeys.add(view.findViewById(R.id.key8))
         pinKeys.add(view.findViewById(R.id.key9))
+        pinKeys.add(view.findViewById(R.id.key0))
         leftKey = view.findViewById(R.id.leftKey)
         rightKey = view.findViewById(R.id.rightKey)
+        leftKeyContainer = view.findViewById(R.id.leftKeyContainer)
+        rightKeyContainer = view.findViewById(R.id.rightKeyContainer)
         fillNumbers()
         setStyles()
         setupListeners()
@@ -207,12 +212,17 @@ class PinKeyboard: ConstraintLayout {
                 else it.text = "0"
             }
         } else {
+            val assortedSet = HashSet<Int>()
             val assortedText = ArrayList<Int>()
-            for (i in 0..10) {
-                var n = Random.nextInt(0, 10)
-                while (assortedText.contains(n)) { n = Random.nextInt(0, 10) }
-                assortedText.add(n)
+            val rnd = Random(10)
+            for (i in 0..9) {
+                var n = 0
+                do {
+                    n = rnd.nextInt(10)
+                    if (n == 10) n = 0
+                } while (!assortedSet.add(n))
             }
+            assortedText.addAll(assortedSet)
             pinKeys.forEach {
                 it.text = "${assortedText[pinKeys.indexOf(it)]}"
             }
