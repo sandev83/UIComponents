@@ -17,8 +17,8 @@
             android:id="@+id/key1"
             style="@style/pinKeyboardKey"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="1"
             android:textSize="42sp" />
@@ -57,8 +57,8 @@
             android:id="@+id/key3"
             style="@style/pinKeyboardKey"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="3"
             android:textSize="42sp" />
@@ -77,8 +77,8 @@
             android:id="@+id/key4"
             style="@style/pinKeyboardKey"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="4"
             android:textSize="42sp" />
@@ -118,8 +118,8 @@
             android:id="@+id/key6"
             style="@style/pinKeyboardKey"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="6"
             android:textSize="42sp" />
@@ -138,8 +138,8 @@
             android:id="@+id/key7"
             style="@style/pinKeyboardKey"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="7"
             android:textSize="42sp" />
@@ -179,8 +179,8 @@
             android:id="@+id/key9"
             style="@style/pinKeyboardKey"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="9"
             android:textSize="42sp" />
@@ -252,7 +252,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="2dp"
             android:gravity="center"
             android:padding="6dp">
