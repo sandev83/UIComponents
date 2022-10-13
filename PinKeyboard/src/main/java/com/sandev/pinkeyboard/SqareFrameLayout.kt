@@ -2,6 +2,7 @@ package com.sandev.pinkeyboard
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.FrameLayout
 
 class SquareFrameLayout: FrameLayout {
@@ -19,6 +20,7 @@ class SquareFrameLayout: FrameLayout {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)
             val minSize = Math.min(measuredWidth, measuredHeight)
             setMeasuredDimension(minSize, minSize)
+            Log.d("SquareFrame", "0&0 - $id : [$widthSize : $heightSize] => [$minSize]")
         } else {
             val size = if (widthSize == 0 || heightSize == 0) {
                 Math.max(widthSize, heightSize)
@@ -28,6 +30,7 @@ class SquareFrameLayout: FrameLayout {
             val newMeasureSpec = MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY)
             super.onMeasure(newMeasureSpec, newMeasureSpec)
             setMeasuredDimension(newMeasureSpec, newMeasureSpec)
+            Log.d("SquareFrame", "$widthMeasureSpec & $heightMeasureSpec - $id : [$widthSize : $heightSize] => [$newMeasureSpec]")
         }
     }
 }

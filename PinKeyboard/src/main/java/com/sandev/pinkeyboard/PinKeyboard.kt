@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
@@ -22,7 +21,9 @@ class PinKeyboard: ConstraintLayout {
     @Dimension
     private var keyHeight: Int = 0
     @Dimension
-    private var keyPadding: Int = 0
+    private var keyTextPadding: Int = 0
+    @Dimension
+    private var keyImagePadding: Int = 0
     @DrawableRes
     private var pinKeyBakground: Int = 0
     @ColorRes
@@ -48,16 +49,21 @@ class PinKeyboard: ConstraintLayout {
 
     private var listener: PinKeyboardListener? = null
 
+    private var ctx: Context = context
+
     constructor(context: Context) : super(context) {
+        ctx = context
         inflateView()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        ctx = context
         initializeAttributes(attrs)
         inflateView()
     }
 
     constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        ctx = context
         initializeAttributes(attrs)
         inflateView()
     }
@@ -84,14 +90,24 @@ class PinKeyboard: ConstraintLayout {
 
     fun setPinKeyBackground(@DrawableRes background: Int) {
         for (key in pinKeys) {
-            key.background = ContextCompat.getDrawable(context, background)
+            key.background = ContextCompat.getDrawable(ctx, background)
         }
     }
 
     fun setPinKeyTextColor(@ColorRes color: Int) {
         for (key in pinKeys) {
-            key.setTextColor(ContextCompat.getColorStateList(context, color))
+            key.setTextColor(ContextCompat.getColor(ctx, color))
         }
+        leftKey.setColorFilter(ContextCompat.getColor(ctx, color))
+        rightKey.setColorFilter(ContextCompat.getColor(ctx, color))
+    }
+
+    fun setLeftKeyPadding(padding: Int) {
+        leftKeyContainer.setPadding(padding, padding, padding, padding)
+    }
+
+    fun setRightKeyPadding(padding: Int) {
+        rightKeyContainer.setPadding(padding, padding, padding, padding)
     }
 
     private fun setLeftKeyIcon(@DrawableRes icon: Int) {
@@ -105,11 +121,11 @@ class PinKeyboard: ConstraintLayout {
     }
 
     private fun setLeftKeyBackground(@DrawableRes bg: Int) {
-        if (bg != 0) leftKeyContainer.background = ContextCompat.getDrawable(context, bg)
+        if (bg != 0) leftKeyContainer.background = ContextCompat.getDrawable(ctx, bg)
     }
 
     private fun setRightKeyBackground(@DrawableRes bg: Int) {
-        if (bg != 0) rightKeyContainer.background = ContextCompat.getDrawable(context, bg)
+        if (bg != 0) rightKeyContainer.background = ContextCompat.getDrawable(ctx, bg)
     }
 
     private fun setKeyWidth() {
@@ -117,8 +133,8 @@ class PinKeyboard: ConstraintLayout {
         for (key in pinKeys) {
             key.layoutParams.width = keyWidth
         }
-        leftKey.layoutParams.width = keyWidth
-        rightKey.layoutParams.width = keyWidth
+        leftKeyContainer.layoutParams.width = keyWidth
+        rightKeyContainer.layoutParams.width = keyWidth
         requestLayout()
     }
 
@@ -127,23 +143,23 @@ class PinKeyboard: ConstraintLayout {
         for (key in pinKeys) {
             key.layoutParams.height = keyHeight
         }
-        leftKey.layoutParams.height = keyHeight
-        rightKey.layoutParams.height = keyHeight
+        leftKeyContainer.layoutParams.height = keyHeight
+        rightKeyContainer.layoutParams.height = keyHeight
         requestLayout()
     }
 
     private fun setKeyPadding() {
         for (key in pinKeys) {
-            key.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
-            key.compoundDrawablePadding = -1 * keyPadding
+            key.setPadding(keyTextPadding, keyTextPadding, keyTextPadding, keyTextPadding)
+            key.compoundDrawablePadding = -1 * keyTextPadding
         }
-        leftKey.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
-        rightKey.setPadding(keyPadding, keyPadding, keyPadding, keyPadding)
+        leftKeyContainer.setPadding(keyImagePadding, keyImagePadding, keyImagePadding, keyImagePadding)
+        rightKeyContainer.setPadding(keyImagePadding, keyImagePadding, keyImagePadding, keyImagePadding)
     }
 
     private fun setPinKeyFontFamily() {
         if (fontFamily != 0) {
-            val typeface = ResourcesCompat.getFont(context, fontFamily)
+            val typeface = ResourcesCompat.getFont(ctx, fontFamily)
             for (key in pinKeys) {
                 key.typeface = typeface
             }
@@ -151,13 +167,14 @@ class PinKeyboard: ConstraintLayout {
     }
 
     private fun initializeAttributes(attrs: AttributeSet?) {
-        val array = context.theme.obtainStyledAttributes(attrs, R.styleable.PinKeyboard, 0, 0)
+        val array = ctx.theme.obtainStyledAttributes(attrs, R.styleable.PinKeyboard, 0, 0)
         try {
             val type = array.getInt(R.styleable.PinKeyboard_pinKeyboardType, -1)
             if (type == -1) throw IllegalArgumentException("keyboardType attribute is required.")
             keyWidth = array.getLayoutDimension(R.styleable.PinKeyboard_pinKeyboardWidth, DEFAULT_KEY_WIDTH_DP)
             keyHeight = array.getLayoutDimension(R.styleable.PinKeyboard_pinKeyboardHeight, DEFAULT_KEY_HEIGHT_DP)
-            keyPadding = array.getDimensionPixelSize(R.styleable.PinKeyboard_pinKeyboardPadding, dpToPx(DEFAULT_KEY_PADDING_DP.toFloat()))
+            keyTextPadding = array.getDimensionPixelSize(R.styleable.PinKeyboard_pinKeyboardTextPadding, dpToPx(DEFAULT_KEY_PADDING_DP.toFloat()))
+            keyImagePadding = array.getDimensionPixelSize(R.styleable.PinKeyboard_pinKeyboardImagePadding, dpToPx(DEFAULT_KEY_PADDING_DP.toFloat() - 2f))
             pinKeyBakground = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardBackground,0)
             pinKeyTextColor = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardTextColor, 0)
             rightKeyIcon = array.getResourceId(R.styleable.PinKeyboard_pinKeyboardRightButtonIcon, 0)
@@ -185,7 +202,7 @@ class PinKeyboard: ConstraintLayout {
     }
 
     private fun inflateView() {
-        val view = View.inflate(context, R.layout.pin_keyboard, this)
+        val view = View.inflate(ctx, R.layout.pin_keyboard, this)
         pinKeys = ArrayList(10)
         pinKeys.add(view.findViewById(R.id.key1))
         pinKeys.add(view.findViewById(R.id.key2))

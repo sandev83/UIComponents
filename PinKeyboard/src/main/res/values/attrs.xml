@@ -17,7 +17,8 @@
         <attr name="pinKeyboardTextSize" format="dimension"/>
         <attr name="pinKeyboardTextColor" format="reference"/>
         <attr name="pinKeyboardTextFontFamily" format="reference"/>
-        <attr name="pinKeyboardPadding" format="dimension"/>
+        <attr name="pinKeyboardTextPadding" format="dimension"/>
+        <attr name="pinKeyboardImagePadding" format="dimension"/>
         <attr name="pinKeyboardBackground" format="reference"/>
         <attr name="pinKeyboardLeftButtonIcon" format="reference"/>
         <attr name="pinKeyboardLeftButtonBackground" format="reference"/>
